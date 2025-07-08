@@ -1,0 +1,32 @@
+{% extends "QuickNotes/site.html" %}
+{% block title %} {{ note.name }} {% endblock %}
+{% block body %}
+
+<!-- <form action="{% url 'edit' note.id %}" method="POST" class="edit-form">
+    {% csrf_token %}
+    <label for="name">Note name:</label>
+    <input type="text" name="name" id="name" class="note-title" placeholder="New Note" {% if note.name %}value="{{ note.name }}"{% endif %} />
+    <label for="type">Note Content:</label>
+    <textarea name="content" id="content" placeholder="Write your notes here">{% if note.content %}{{note.content}}{% endif %}</textarea>
+    <div class="button-row">
+        <button type="submit">Save</button>
+</form> -->
+<form action='{% url "edit" note.id %}' method="POST" enctype="multipart/form-data" id="edit-form">
+    {% load static %}
+    {% csrf_token %}
+    {{ form.name.as_widget }}
+    {{ form.content.as_widget }}
+    <div class="button-row">
+    <button type="submit">Save Note</button>
+</form>
+<form action="{% url 'delete' note.id %}" method="POST">
+    {% csrf_token %}
+    <button>Delete Note</button>
+</form>
+</div>
+<!-- </div> -->
+
+<br/>
+<a href="{% url 'quicknotes' %}">All notes</a>
+
+{% endblock %}

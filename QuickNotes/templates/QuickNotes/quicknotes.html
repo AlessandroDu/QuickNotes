@@ -1,0 +1,19 @@
+{% extends "QuickNotes/site.html" %}
+{% block title %} QuickNotes {% endblock %}
+{% block body %}
+<h1>Quick Notes</h1>
+<form action='{% url "add" %}' method="POST" enctype="multipart/form-data" class="upload-form">
+    {% load static %}
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Add Note</button>
+</form>
+<div class="note-list">
+    {% for note in notes %}
+        <a href="{% url 'quicknote' note.id %}" class="note-card">
+            <h3 >{{ note.name|default:'New Note' }}</h3>
+            <p>{{ note.content|default:"Empty"|truncatewords:10 }}</p>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
