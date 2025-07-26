@@ -5,7 +5,7 @@ from .models import Note
 from .forms import UploadForm
 
 def home(request):
-    return HttpResponse("Welcome home. This is the QuickNotes app.")
+    return render(request, 'QuickNotes/home.html')
 
 def QuickNotes(request):
     data = Note.objects.all()

@@ -1,0 +1,13 @@
+{% extends "QuickNotes/site.html" %}
+{% block title %}Welcome to QuickNotes{% endblock %}
+{% block body %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh;">
+    <h1>Welcome to QuickNotes!</h1>
+    <p>Your simple and fast note-taking app.</p>
+    <a href="{% url 'quicknotes' %}">
+        <button style="padding: 16px 32px; font-size: 1.2rem; border-radius: 8px; background: #0077ff; color: #fff; border: none; cursor: pointer;">
+            Go to My Notes
+        </button>
+    </a>
+</div>
+{% endblock %}
