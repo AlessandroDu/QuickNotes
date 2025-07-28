@@ -1,13 +1,61 @@
 {% extends "QuickNotes/site.html" %}
 {% block title %}Welcome to QuickNotes{% endblock %}
 {% block body %}
-<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh;">
-    <h1>Welcome to QuickNotes!</h1>
-    <p>Your simple and fast note-taking app.</p>
-    <a href="{% url 'quicknotes' %}">
-        <button style="padding: 16px 32px; font-size: 1.2rem; border-radius: 8px; background: #0077ff; color: #fff; border: none; cursor: pointer;">
-            Go to My Notes
-        </button>
-    </a>
+<div style="display: flex; min-height: 70vh; align-items: center; justify-content: center;">
+    <!-- Main Welcome Section -->
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+        <h1>Welcome to QuickNotes!</h1>
+        <p>Your simple and fast note-taking app.</p>
+        <a href="{% url 'quicknotes' %}">
+            <button style="padding: 16px 32px; font-size: 1.2rem; border-radius: 8px; background: #0077ff; color: #fff; border: none; cursor: pointer;">
+                Go to My Notes
+            </button>
+        </a>
+    </div>
+    <!-- AI Prompt Summary Box -->
+    <div style="
+        flex: 0 0 380px;
+        margin-left: 48px;
+        background: #f4f8ff;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        padding: 32px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 340px;
+        max-width: 380px;
+    ">
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="AI" style="width: 36px; height: 36px; margin-right: 12px;">
+            <span style="font-weight: bold; font-size: 1.2rem;">QuickNotes AI</span>
+        </div>
+        <div style="flex: 1; background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 18px; font-size: 0.98rem; color: #333; min-height: 80px;">
+            <em>Ask me to summarize, search, or answer questions about your notes!</em>
+            <br>
+            <span style="color: #aaa; font-size: 0.95em;">e.g. "Summarize my last 3 notes" or "What did I write about Django?"</span>
+        </div>
+        <form style="display: flex;">
+            <input type="text" placeholder="Ask QuickNotes AI..." style="
+                flex: 1;
+                padding: 10px 14px;
+                border: 1px solid #c3d0e8;
+                border-radius: 6px 0 0 6px;
+                font-size: 1rem;
+                outline: none;
+                background: #fafdff;
+            ">
+            <button type="button" style="
+                background: #0077ff;
+                color: #fff;
+                border: none;
+                border-radius: 0 6px 6px 0;
+                padding: 0 18px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: background 0.2s;
+            ">Ask</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
